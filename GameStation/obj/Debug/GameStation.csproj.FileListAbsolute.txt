@@ -1,0 +1,14 @@
+C:\Users\gusta\source\repos\GameStation\GameStation\bin\Debug\GameStation.exe.config
+C:\Users\gusta\source\repos\GameStation\GameStation\bin\Debug\GameStation.exe
+C:\Users\gusta\source\repos\GameStation\GameStation\bin\Debug\GameStation.pdb
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.csprojAssemblyReference.cache
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.MainForm.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.Properties.Resources.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.csproj.GenerateResource.cache
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.exe
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.pdb
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.ClientsRegistration.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\bin\Debug\Newtonsoft.Json.dll
+C:\Users\gusta\source\repos\GameStation\GameStation\bin\Debug\Newtonsoft.Json.xml
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.csproj.CopyComplete
