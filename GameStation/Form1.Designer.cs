@@ -87,6 +87,7 @@
             this.cidadesToolStripMenuItem.Name = "cidadesToolStripMenuItem";
             this.cidadesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cidadesToolStripMenuItem.Text = "Cidades";
+            this.cidadesToolStripMenuItem.Click += new System.EventHandler(this.cidadesToolStripMenuItem_Click);
             // 
             // fornecedoresToolStripMenuItem
             // 
@@ -115,31 +116,31 @@
             // clientesToolStripMenuItem1
             // 
             this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
             this.clientesToolStripMenuItem1.Text = "Clientes";
             // 
             // funcionáriosToolStripMenuItem1
             // 
             this.funcionáriosToolStripMenuItem1.Name = "funcionáriosToolStripMenuItem1";
-            this.funcionáriosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.funcionáriosToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
             this.funcionáriosToolStripMenuItem1.Text = "Funcionários";
             // 
             // produtosToolStripMenuItem1
             // 
             this.produtosToolStripMenuItem1.Name = "produtosToolStripMenuItem1";
-            this.produtosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.produtosToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
             this.produtosToolStripMenuItem1.Text = "Produtos";
             // 
             // vendasToolStripMenuItem
             // 
             this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
-            this.vendasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.vendasToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.vendasToolStripMenuItem.Text = "Vendas";
             // 
             // estoqueToolStripMenuItem
             // 
             this.estoqueToolStripMenuItem.Name = "estoqueToolStripMenuItem";
-            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.estoqueToolStripMenuItem.Text = "Estoque";
             // 
             // vendasToolStripMenuItem1
@@ -157,6 +158,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "GameStation";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

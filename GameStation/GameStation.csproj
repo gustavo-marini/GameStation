@@ -48,6 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitiesRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CitiesRegistration.Designer.cs">
+      <DependentUpon>CitiesRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="db_gamestationDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_gamestationDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Libs\Basics.cs" />
     <Compile Include="ClientsRegistration.cs">
       <SubType>Form</SubType>
@@ -61,10 +72,14 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Libs\Estado.cs" />
     <Compile Include="Libs\Localidade.cs" />
     <Compile Include="Libs\Validate.classe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CitiesRegistration.resx">
+      <DependentUpon>CitiesRegistration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientsRegistration.resx">
       <DependentUpon>ClientsRegistration.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,6 +95,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="db_gamestationDataSet.xsc">
+      <DependentUpon>db_gamestationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="db_gamestationDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>db_gamestationDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db_gamestationDataSet.xss">
+      <DependentUpon>db_gamestationDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

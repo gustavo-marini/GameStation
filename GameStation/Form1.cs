@@ -17,9 +17,6 @@ namespace GameStation
         {
             InitializeComponent();
         }
-
-        protected SqlConnection connection;
-        private string stringConnection = "";
         
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -32,6 +29,21 @@ namespace GameStation
             catch
             {
                 //
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try {
+                CitiesRegistration citiesRegistration = new CitiesRegistration();
+                citiesRegistration.Show();
+            } catch {
+
             }
         }
     }

@@ -12,3 +12,4 @@ C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.Client
 C:\Users\gusta\source\repos\GameStation\GameStation\bin\Debug\Newtonsoft.Json.dll
 C:\Users\gusta\source\repos\GameStation\GameStation\bin\Debug\Newtonsoft.Json.xml
 C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.csproj.CopyComplete
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.CitiesRegistration.resources

@@ -101,14 +101,81 @@ namespace GameStation
                     int idade = Convert.ToInt32(txtAge.Text.ToString());
                     string endereco = txtAddress.Text.ToString();
                     string cpf = txtCpf.Text.ToString();
+                    string cidade = txtCity.Text.ToString();
+                    string estado = txtState.Text.ToString();
                     string bairro = txtNeighborhood.Text.ToString();
                     int numero = Convert.ToInt32(txtNumber.Text.ToString());
                     string cep = txtCep.Text.ToString();
 
-                    string sqlInsert = "INSERT INTO tb_clientes (codigo_pais, nome, sobrenome, email, telefone, celular, data_nascimento, idade, endereco, cpf, bairro, numero, cep)" +
-                        " VALUES(30, '"+nome+"', '"+sobrenome+"', '"+email+"', '"+telefone+"', '"+celular+"', '"+data_nascimento+"', "+idade+", '"+endereco+"', '"+cpf+"', '"+bairro+"', "+numero+", '"+cep+"')";
-                    Console.WriteLine(sqlInsert);
+
+                    // Tenta encontrar a cidade no banco. Se encontrar, pega o id, senão adiciona.
+                    int codigo_cidade = -1, codigo_estado = -1;
+
+                    string sqlCity = "SELECT * FROM tb_cidades WHERE nome = @nome";
+                    SqlCommand commandCity = new SqlCommand(sqlCity, conn);
+                    commandCity.Parameters.Add("@nome", SqlDbType.VarChar).Value = cidade;
+
+                    SqlDataReader cityReader = commandCity.ExecuteReader();
+
+                    if(cityReader.HasRows) {
+                        codigo_cidade = cityReader.GetInt32(0);
+                        codigo_estado = cityReader.GetInt32(1);
+                        cityReader.Close();
+                    } else {
+                        // Se não encontrar a cidade na tabela, então pega a informação 
+                        // recebida da API e adiciona.
+                        string sqlState = "SELECT * FROM tb_estados WHERE lower(nome)='"+ estado.ToLower() + "'";
+                        SqlCommand commandState = new SqlCommand(sqlState, conn);
+
+                        SqlDataReader stateReader = commandState.ExecuteReader();
+
+                        if(stateReader.HasRows) {
+                            if (stateReader.Read()) {
+                                codigo_estado = Convert.ToInt32(stateReader["codigo"]);
+                                stateReader.Close();
+
+                                try {
+                                    string insertNewCity = "INSERT INTO tb_cidades (codigo_estado, nome, cep) OUTPUT INSERTED.codigo " +
+                                    " VALUES (@codigo_estado, @nome, @cep)";
+                                    SqlCommand commandNewCity = new SqlCommand(insertNewCity, conn);
+
+                                    commandNewCity.Parameters.Add("@codigo_estado", SqlDbType.Int).Value = codigo_estado;
+                                    commandNewCity.Parameters.Add("@nome", SqlDbType.VarChar).Value = cidade;
+                                    commandNewCity.Parameters.Add("@cep", SqlDbType.VarChar).Value = cep;
+
+                                    int id = (int)commandNewCity.ExecuteScalar();
+                                    codigo_cidade = id;
+                                } catch (Exception ex) {
+                                    Console.WriteLine("Erro: " + ex.Message);
+                                }
+                            }
+                        } else {
+                            MessageBox.Show("Nenhum estado encontrado");
+                        }
+                    }
+
+
+                    string sqlInsert = "INSERT INTO tb_clientes (codigo_pais, codigo_estado, codigo_cidade, nome, sobrenome, email, telefone, celular, data_nascimento, idade, endereco, cpf, bairro, numero, cep)" +
+                        " VALUES(30, @codigo_estado, @codigo_cidade, @nome, @sobrenome, @email, @telefone, @celular, @data_nascimento, @idade, @endereco, @cpf, @bairro, @numero, @cep)";
+
                     SqlCommand insertClient = new SqlCommand(sqlInsert, conn);
+
+                    insertClient.Parameters.Add("@codigo_estado", SqlDbType.Int).Value = codigo_estado;
+                    insertClient.Parameters.Add("@codigo_cidade", SqlDbType.Int).Value = codigo_cidade;
+                    insertClient.Parameters.Add("@nome", SqlDbType.VarChar).Value = nome;
+                    insertClient.Parameters.Add("@sobrenome", SqlDbType.VarChar).Value = sobrenome;
+                    insertClient.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
+                    insertClient.Parameters.Add("@telefone", SqlDbType.VarChar).Value = telefone;
+                    insertClient.Parameters.Add("@celular", SqlDbType.VarChar).Value = celular;
+                    insertClient.Parameters.Add("@data_nascimento", SqlDbType.VarChar).Value = data_nascimento;
+                    insertClient.Parameters.Add("@idade", SqlDbType.Int).Value = idade;
+                    insertClient.Parameters.Add("@endereco", SqlDbType.VarChar).Value = endereco;
+                    insertClient.Parameters.Add("@cpf", SqlDbType.VarChar).Value = cpf;
+                    insertClient.Parameters.Add("@bairro", SqlDbType.VarChar).Value = bairro;
+                    insertClient.Parameters.Add("@numero", SqlDbType.Int).Value = numero;
+                    insertClient.Parameters.Add("@cep", SqlDbType.VarChar).Value = cep;
+
+
                     int result = insertClient.ExecuteNonQuery();
 
                     if(result == 1) {
