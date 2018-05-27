@@ -13,3 +13,6 @@ C:\Users\gusta\source\repos\GameStation\GameStation\bin\Debug\Newtonsoft.Json.dl
 C:\Users\gusta\source\repos\GameStation\GameStation\bin\Debug\Newtonsoft.Json.xml
 C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.csproj.CopyComplete
 C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.CitiesRegistration.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.ProductsRegistration.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.Genders.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.EditGender.resources

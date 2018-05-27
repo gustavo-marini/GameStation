@@ -10,5 +10,10 @@ namespace GameStation.Libs
     {
         public int codigo, codigo_pais;
         public string uf, nome;
+
+        public override string ToString()
+        {
+            return nome;
+        }
     }
 }

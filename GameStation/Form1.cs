@@ -46,5 +46,17 @@ namespace GameStation
 
             }
         }
+
+        private void novoProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProductsRegistration productsRegistration = new ProductsRegistration();
+            productsRegistration.Show();
+        }
+
+        private void cadastrarGêneroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Genders genders = new Genders();
+            genders.Show();
+        }
     }
 }
