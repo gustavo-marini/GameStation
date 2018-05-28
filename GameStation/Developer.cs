@@ -1,5 +1,4 @@
-﻿using GameStation.Libs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,30 +11,30 @@ using System.Windows.Forms;
 
 namespace GameStation
 {
-    public partial class Genders : Form
+    public partial class Developer : Form
     {
         private string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=db_gamestation;Integrated Security=True;MultipleActiveResultSets=true;";
         private SqlConnection conn;
 
-        public Genders()
+        public Developer()
         {
             InitializeComponent();
         }
 
-        private void feedGenderList()
+        private void feedDevelopersList()
         {
             try {
-                string getGeneros = "SELECT * FROM tb_generos";
+                string getGeneros = "SELECT * FROM tb_desenvolvedor";
                 SqlCommand commGeneros = new SqlCommand(getGeneros, conn);
 
                 SqlDataReader gr = commGeneros.ExecuteReader();
 
                 if (gr.HasRows) {
-                    listGenders.Items.Clear();
+                    listDevelopers.Items.Clear();
                     while (gr.Read()) {
                         string[] row = { gr.GetInt32(0).ToString(), gr.GetString(1) };
                         ListViewItem item = new ListViewItem(row);
-                        listGenders.Items.Add(item);
+                        listDevelopers.Items.Add(item);
                     }
                 }
             } catch (Exception ex) {
@@ -43,80 +42,72 @@ namespace GameStation
             }
         }
 
-        private void Genders_Load(object sender, EventArgs e)
+        private void Developer_Load(object sender, EventArgs e)
         {
             try {
                 conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                feedGenderList();
-            } catch(Exception ex) {
+                feedDevelopersList();
+            } catch (Exception ex) {
                 Console.WriteLine("Erro: " + ex.Message);
             }
         }
 
-        private void Genders_FocusEnter(object sender, EventArgs e)
+        private void Developers_FocusEnter(object sender, EventArgs e)
         {
-            feedGenderList();
+            feedDevelopersList();
         }
 
         private void lstItems_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
-            e.NewWidth = listGenders.Columns[e.ColumnIndex].Width;
+            e.NewWidth = listDevelopers.Columns[e.ColumnIndex].Width;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
             try {
-                if(listGenders.SelectedItems.Count > 0) {
-                    var selected = listGenders.SelectedItems[0];
+                if (listDevelopers.SelectedItems.Count > 0) {
+                    var selected = listDevelopers.SelectedItems[0];
 
                     int codeToDelete = Convert.ToInt32(selected.SubItems[0].Text);
                     string nameToDelete = selected.SubItems[1].Text;
 
-                    DialogResult confirm = MessageBox.Show("Tem certeza que deseja remover o gênero \"" + nameToDelete + "\"?", "Remover gênero", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                    DialogResult confirm = MessageBox.Show("Tem certeza que deseja remover o desenvolvedor \"" + nameToDelete + "\"?", "Remover desenvolvedor", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
-                    if(confirm == DialogResult.Yes) {
-                        string sqlRemove = "DELETE FROM tb_generos WHERE codigo = @codigo";
+                    if (confirm == DialogResult.Yes) {
+                        string sqlRemove = "DELETE FROM tb_desenvolvedor WHERE codigo = @codigo";
                         SqlCommand commRemoveGender = new SqlCommand(sqlRemove, conn);
                         commRemoveGender.Parameters.AddWithValue("@codigo", codeToDelete);
 
                         int genderDeleted = commRemoveGender.ExecuteNonQuery();
 
-                        if(genderDeleted > 0) {
-                            feedGenderList();
+                        if (genderDeleted > 0) {
+                            feedDevelopersList();
 
-                            string deleteRelationGender = "DELETE FROM tb_produtos_generos WHERE codigo_genero = @cod_gen";
-                            SqlCommand commRemoveRelationGender = new SqlCommand(deleteRelationGender, conn);
-                            commRemoveRelationGender.Parameters.AddWithValue("@cod_gen", codeToDelete);
-
-                            int relationGenderDeleted = commRemoveRelationGender.ExecuteNonQuery();
-
-                            if(relationGenderDeleted > 0) {
-                                MessageBox.Show("Genêro \"" + nameToDelete + "\" deletado com sucesso!", "Gênero deletado");
-                            } 
+                            MessageBox.Show("Desenvolvedor \"" + nameToDelete + "\" deletado com sucesso!", "Desenvolvedor deletado");
                         }
                     }
                 } else {
-                    MessageBox.Show("Selecione um gênero");
+                    MessageBox.Show("Selecione um desenvolvedor");
                 }
-            } catch(Exception ex) {
+            } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             try {
-                if (listGenders.SelectedItems.Count > 0) {
-                    var selected = listGenders.SelectedItems[0];
+                if (listDevelopers.SelectedItems.Count > 0) {
+                    var selected = listDevelopers.SelectedItems[0];
 
                     int codeToDelete = Convert.ToInt32(selected.SubItems[0].Text);
                     string nameToDelete = selected.SubItems[1].Text;
 
-                    EditGender editGender = new EditGender(codeToDelete, nameToDelete);
-                    editGender.Show();
+                    EditDeveloper editDeveloper = new EditDeveloper(codeToDelete, nameToDelete);
+                    editDeveloper.Show();
                 } else {
                     MessageBox.Show("Selecione um gênero");
                 }
@@ -125,34 +116,34 @@ namespace GameStation
             }
         }
 
-        private void btnNewGender_Click(object sender, EventArgs e)
+        private void btnNewDeveloper_Click(object sender, EventArgs e)
         {
             try {
-                if(txtNome.Text.Length > 0) {
+                if (txtNome.Text.Length > 0) {
                     string nome = txtNome.Text.ToString();
 
-                    string sqlCheck = "SELECT * FROM tb_generos WHERE nome = @nome";
+                    string sqlCheck = "SELECT * FROM tb_desenvolvedor WHERE nome = @nome";
                     SqlCommand commandCheck = new SqlCommand(sqlCheck, conn);
                     commandCheck.Parameters.AddWithValue("@nome", nome);
 
                     SqlDataReader checkInsert = commandCheck.ExecuteReader();
 
-                    if(!checkInsert.HasRows) {
-                        string sqlInsert = "INSERT INTO tb_generos (nome) VALUES (@nome)";
+                    if (!checkInsert.HasRows) {
+                        string sqlInsert = "INSERT INTO tb_desenvolvedor (nome) VALUES (@nome)";
                         SqlCommand commandInsert = new SqlCommand(sqlInsert, conn);
                         commandInsert.Parameters.AddWithValue("@nome", nome);
 
-                        if(commandInsert.ExecuteNonQuery() > 0) {
-                            MessageBox.Show("Gênero inserido com sucesso!");
+                        if (commandInsert.ExecuteNonQuery() > 0) {
+                            MessageBox.Show("Desenvolvedor inserido com sucesso!");
 
-                            feedGenderList();
+                            feedDevelopersList();
                         }
                     } else {
-                        MessageBox.Show("Um gênero com esse nome já existe.");
+                        MessageBox.Show("Um desenvolvedor com esse nome já existe.");
                     }
                     txtNome.Clear();
                 } else {
-                    MessageBox.Show("Digite o nome do gênero.");
+                    MessageBox.Show("Digite o nome do desenvolvedor.");
                 }
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);

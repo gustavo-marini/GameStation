@@ -58,5 +58,17 @@ namespace GameStation
             Genders genders = new Genders();
             genders.Show();
         }
+
+        private void cadastrarDesenvolvedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Developer developers = new Developer();
+            developers.Show();
+        }
+
+        private void disponibilidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Availability availability = new Availability();
+            availability.Show();
+        }
     }
 }

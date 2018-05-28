@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Availability.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Availability.Designer.cs">
+      <DependentUpon>Availability.cs</DependentUpon>
+    </Compile>
     <Compile Include="CitiesRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>db_gamestationDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Developer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Developer.Designer.cs">
+      <DependentUpon>Developer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditAvailability.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditAvailability.Designer.cs">
+      <DependentUpon>EditAvailability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditDeveloper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDeveloper.Designer.cs">
+      <DependentUpon>EditDeveloper.cs</DependentUpon>
     </Compile>
     <Compile Include="EditGender.cs">
       <SubType>Form</SubType>
@@ -103,11 +127,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Availability.resx">
+      <DependentUpon>Availability.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CitiesRegistration.resx">
       <DependentUpon>CitiesRegistration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientsRegistration.resx">
       <DependentUpon>ClientsRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Developer.resx">
+      <DependentUpon>Developer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAvailability.resx">
+      <DependentUpon>EditAvailability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDeveloper.resx">
+      <DependentUpon>EditDeveloper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditGender.resx">
       <DependentUpon>EditGender.cs</DependentUpon>

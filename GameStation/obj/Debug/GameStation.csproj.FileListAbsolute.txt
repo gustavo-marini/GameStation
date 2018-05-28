@@ -16,3 +16,7 @@ C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.Cities
 C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.ProductsRegistration.resources
 C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.Genders.resources
 C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.EditGender.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.Developer.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.EditDeveloper.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.Availability.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.EditAvailability.resources

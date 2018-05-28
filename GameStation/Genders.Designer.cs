@@ -141,7 +141,7 @@
             this.listGenders.Location = new System.Drawing.Point(9, 19);
             this.listGenders.MultiSelect = false;
             this.listGenders.Name = "listGenders";
-            this.listGenders.Size = new System.Drawing.Size(315, 131);
+            this.listGenders.Size = new System.Drawing.Size(315, 179);
             this.listGenders.TabIndex = 0;
             this.listGenders.UseCompatibleStateImageBehavior = false;
             this.listGenders.View = System.Windows.Forms.View.Details;

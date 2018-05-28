@@ -17,7 +17,7 @@ namespace GameStation
 {
     public partial class ClientsRegistration : Form
     {
-        private string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=db_gamestation;Integrated Security=True";
+        private string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=db_gamestation;Integrated Security=True;MultipleActiveResultSets=true;";
         private SqlConnection conn;
 
         public ClientsRegistration()
@@ -108,22 +108,25 @@ namespace GameStation
                     string cep = txtCep.Text.ToString();
 
 
-                    // Tenta encontrar a cidade no banco. Se encontrar, pega o id, senão adiciona.
+                    // Tenta encontrar a cidade no banco. 
+                    // Se encontrar, pega o código dela, senão adiciona a cidade.
                     int codigo_cidade = -1, codigo_estado = -1;
 
-                    string sqlCity = "SELECT * FROM tb_cidades WHERE nome = @nome";
+                    string sqlCity = "SELECT * FROM tb_cidades WHERE lower(nome) = @nome";
                     SqlCommand commandCity = new SqlCommand(sqlCity, conn);
-                    commandCity.Parameters.Add("@nome", SqlDbType.VarChar).Value = cidade;
+                    commandCity.Parameters.AddWithValue("@nome", cidade.ToLower());
 
                     SqlDataReader cityReader = commandCity.ExecuteReader();
 
                     if(cityReader.HasRows) {
-                        codigo_cidade = cityReader.GetInt32(0);
-                        codigo_estado = cityReader.GetInt32(1);
-                        cityReader.Close();
+                        while (cityReader.Read()) {
+                            Console.WriteLine("encontrou a cidade " + cidade);
+                            codigo_cidade = cityReader.GetInt32(0);
+                            codigo_estado = cityReader.GetInt32(1);
+                            Console.WriteLine("passou a cidade");
+                        }
                     } else {
-                        // Se não encontrar a cidade na tabela, então pega a informação 
-                        // recebida da API e adiciona.
+                        // Se não encontrar a cidade na tabela, então pega a informação recebida da API e adiciona.
                         string sqlState = "SELECT * FROM tb_estados WHERE lower(nome)='"+ estado.ToLower() + "'";
                         SqlCommand commandState = new SqlCommand(sqlState, conn);
 
@@ -131,7 +134,7 @@ namespace GameStation
 
                         if(stateReader.HasRows) {
                             if (stateReader.Read()) {
-                                codigo_estado = Convert.ToInt32(stateReader["codigo"]);
+                                codigo_estado = Convert.ToInt32(stateReader.GetInt32(0));
                                 stateReader.Close();
 
                                 try {
@@ -143,7 +146,7 @@ namespace GameStation
                                     commandNewCity.Parameters.Add("@nome", SqlDbType.VarChar).Value = cidade;
                                     commandNewCity.Parameters.Add("@cep", SqlDbType.VarChar).Value = cep;
 
-                                    int id = (int)commandNewCity.ExecuteScalar();
+                                    int id = Convert.ToInt32(commandNewCity.ExecuteScalar());
                                     codigo_cidade = id;
                                 } catch (Exception ex) {
                                     Console.WriteLine("Erro: " + ex.Message);
