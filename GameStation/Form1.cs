@@ -70,5 +70,11 @@ namespace GameStation
             Availability availability = new Availability();
             availability.Show();
         }
+
+        private void todosOsProdutosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AllProducts allProducts = new AllProducts();
+            allProducts.Show();
+        }
     }
 }

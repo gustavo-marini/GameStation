@@ -119,12 +119,8 @@ namespace GameStation
                     SqlDataReader cityReader = commandCity.ExecuteReader();
 
                     if(cityReader.HasRows) {
-                        while (cityReader.Read()) {
-                            Console.WriteLine("encontrou a cidade " + cidade);
-                            codigo_cidade = cityReader.GetInt32(0);
-                            codigo_estado = cityReader.GetInt32(1);
-                            Console.WriteLine("passou a cidade");
-                        }
+                        codigo_cidade = cityReader.GetInt32(0);
+                        codigo_estado = cityReader.GetInt32(1);
                     } else {
                         // Se não encontrar a cidade na tabela, então pega a informação recebida da API e adiciona.
                         string sqlState = "SELECT * FROM tb_estados WHERE lower(nome)='"+ estado.ToLower() + "'";

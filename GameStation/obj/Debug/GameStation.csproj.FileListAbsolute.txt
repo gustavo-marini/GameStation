@@ -20,3 +20,4 @@ C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.Develo
 C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.EditDeveloper.resources
 C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.Availability.resources
 C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.EditAvailability.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.AllProducts.resources

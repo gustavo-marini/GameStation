@@ -31,5 +31,20 @@ namespace GameStation.Libs
                 return -1;
             }
         }
+
+        public static string getNameById(int codigo, SqlConnection conn)
+        {
+            string sql = "SELECT descricao FROM tb_disponibilidades WHERE codigo = @codigo";
+            SqlCommand command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("@codigo", codigo);
+
+            try {
+                string descricao = command.ExecuteScalar().ToString();
+
+                return descricao;
+            } catch {
+                return String.Empty;
+            }
+        }
     }
 }
