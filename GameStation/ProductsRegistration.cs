@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -146,7 +147,7 @@ namespace GameStation
             try {
                 Validate val = new Validate();
 
-                bool validateNome = val.onlyLetters(txtNome, "Nome");
+                bool validateNome = val.Required(txtNome, "Nome");
                 bool validateDes = (cmbDesenvolvedor.SelectedItem != null);
                 bool validateDisp = (cmbDisponibilidade.SelectedItem != null);
                 bool validateEstoque = mskEstoque.Text.Length != 0;
@@ -252,7 +253,7 @@ namespace GameStation
                 }
 
             } catch (Exception ex) {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
         }
 

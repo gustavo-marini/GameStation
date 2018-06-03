@@ -21,3 +21,6 @@ C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.EditDe
 C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.Availability.resources
 C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.EditAvailability.resources
 C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.AllProducts.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.CarrinhoCompras.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.EditProduct.resources
+C:\Users\gusta\source\repos\GameStation\GameStation\obj\Debug\GameStation.ProductsReport.resources

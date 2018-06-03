@@ -76,5 +76,11 @@ namespace GameStation
             AllProducts allProducts = new AllProducts();
             allProducts.Show();
         }
+
+        private void produtosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ProductsReport productsReport = new ProductsReport();
+            productsReport.Show();
+        }
     }
 }

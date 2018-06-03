@@ -191,5 +191,23 @@ namespace GameStation.Libs
             }
         }
 
+        public bool Required(TextBox field, string field_name, string message = "")
+        {
+            try {
+                if (field.TextLength > 0) {
+                    return true;
+                } else {
+                    if (message.Length > 0) {
+                        errors.Add(message);
+                    } else {
+                        errors.Add("O campo \"" + field_name + "\" é obrigatório.");
+                    }
+                    return false;
+                }
+            } catch {
+                return false;
+            }
+        }
+
     }
 }

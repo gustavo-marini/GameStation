@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Net;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace GameStation
 {
@@ -15,6 +16,12 @@ namespace GameStation
         {
             cep = cep.Replace("-", "");
             return cep;
+        }
+
+
+        public static string limpaString(string s)
+        {
+            return Regex.Replace(s, "[^0-9.]", "");
         }
 
 

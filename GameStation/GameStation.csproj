@@ -60,6 +60,12 @@
     <Compile Include="Availability.Designer.cs">
       <DependentUpon>Availability.cs</DependentUpon>
     </Compile>
+    <Compile Include="CarrinhoCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CarrinhoCompras.Designer.cs">
+      <DependentUpon>CarrinhoCompras.cs</DependentUpon>
+    </Compile>
     <Compile Include="CitiesRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,12 @@
     <Compile Include="EditGender.Designer.cs">
       <DependentUpon>EditGender.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditProduct.Designer.cs">
+      <DependentUpon>EditProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Genders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,17 +131,27 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Libs\Carrinho.cs" />
+    <Compile Include="Libs\CarrinhoItem.cs" />
     <Compile Include="Libs\Disponibilidade.cs" />
     <Compile Include="Libs\Estado.cs" />
     <Compile Include="Libs\Desenvolvedor.cs" />
     <Compile Include="Libs\Genero.cs" />
+    <Compile Include="Libs\ListViewItemComparer.cs" />
     <Compile Include="Libs\Localidade.cs" />
+    <Compile Include="Libs\Produto.cs" />
     <Compile Include="Libs\Validate.classe.cs" />
     <Compile Include="ProductsRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProductsRegistration.Designer.cs">
       <DependentUpon>ProductsRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductsReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductsReport.Designer.cs">
+      <DependentUpon>ProductsReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Availability.resx">
       <DependentUpon>Availability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CarrinhoCompras.resx">
+      <DependentUpon>CarrinhoCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CitiesRegistration.resx">
       <DependentUpon>CitiesRegistration.cs</DependentUpon>
@@ -157,6 +182,9 @@
     <EmbeddedResource Include="EditGender.resx">
       <DependentUpon>EditGender.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditProduct.resx">
+      <DependentUpon>EditProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProductsRegistration.resx">
       <DependentUpon>ProductsRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductsReport.resx">
+      <DependentUpon>ProductsReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
