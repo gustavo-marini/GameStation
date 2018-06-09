@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Windows.Forms.CheckedListBox;
@@ -213,6 +214,37 @@ namespace GameStation
 
             comparer.Column = e.Column;
             listProdutos.Sort();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try {
+                string downloadsPath = Environment.GetEnvironmentVariable("USERPROFILE") + @"\" + "Downloads/";
+
+                string[] st = new string[listProdutos.Columns.Count];
+
+                StreamWriter sw = new StreamWriter(downloadsPath + "relatorio_produtos_" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".xls", false);
+                sw.AutoFlush = true;
+                for (int col = 0; col < listProdutos.Columns.Count; col++) {
+                    sw.Write("\t" + listProdutos.Columns[col].Text.ToString());
+                }
+
+                int rowIndex = 1;
+                int row = 0;
+                string st1 = "";
+                for (row = 0; row < listProdutos.Items.Count; row++) {
+                    if (rowIndex <= listProdutos.Items.Count)
+                        rowIndex++;
+                    st1 = "\n";
+                    for (int col = 0; col < listProdutos.Columns.Count; col++) {
+                        st1 = st1 + "\t" + listProdutos.Items[row].SubItems[col].Text.ToString();
+                    }
+                    sw.WriteLine(st1);
+                }
+                sw.Close();
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

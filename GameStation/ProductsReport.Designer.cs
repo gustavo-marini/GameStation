@@ -28,6 +28,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.checkListGenFiltro = new System.Windows.Forms.CheckedListBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -53,6 +54,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.checkListGenFiltro);
             this.groupBox1.Controls.Add(this.label6);
@@ -73,11 +75,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros:";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(445, 220);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(101, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Baixar como XLS";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(579, 220);
+            this.button1.Location = new System.Drawing.Point(552, 220);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(101, 23);
             this.button1.TabIndex = 12;
             this.button1.Text = "Filtrar";
             this.button1.UseVisualStyleBackColor = true;
@@ -243,7 +255,7 @@
             this.Controls.Add(this.listProdutos);
             this.Controls.Add(this.groupBox1);
             this.Name = "ProductsReport";
-            this.Text = "ProductsReport";
+            this.Text = "Relatório de Produtos";
             this.Load += new System.EventHandler(this.ProductsReport_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -274,5 +286,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Button button2;
     }
 }

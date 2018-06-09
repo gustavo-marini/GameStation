@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllClients.Designer.cs">
+      <DependentUpon>AllClients.cs</DependentUpon>
+    </Compile>
     <Compile Include="AllProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,12 @@
     <Compile Include="EditAvailability.Designer.cs">
       <DependentUpon>EditAvailability.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditClient.Designer.cs">
+      <DependentUpon>EditClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditDeveloper.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +123,12 @@
     </Compile>
     <Compile Include="EditProduct.Designer.cs">
       <DependentUpon>EditProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeesRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeesRegistration.Designer.cs">
+      <DependentUpon>EmployeesRegistration.cs</DependentUpon>
     </Compile>
     <Compile Include="Genders.cs">
       <SubType>Form</SubType>
@@ -133,6 +151,7 @@
     </Compile>
     <Compile Include="Libs\Carrinho.cs" />
     <Compile Include="Libs\CarrinhoItem.cs" />
+    <Compile Include="Libs\Cidade.cs" />
     <Compile Include="Libs\Disponibilidade.cs" />
     <Compile Include="Libs\Estado.cs" />
     <Compile Include="Libs\Desenvolvedor.cs" />
@@ -155,6 +174,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AllClients.resx">
+      <DependentUpon>AllClients.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AllProducts.resx">
       <DependentUpon>AllProducts.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditAvailability.resx">
       <DependentUpon>EditAvailability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditClient.resx">
+      <DependentUpon>EditClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditDeveloper.resx">
       <DependentUpon>EditDeveloper.cs</DependentUpon>

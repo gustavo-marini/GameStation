@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace GameStation.Libs
 {
-    class Estado
+    class Cidade
     {
-        public int codigo, codigo_pais;
-        public string uf, nome;
+        public int codigo, codigo_estado;
+        public string nome, cep;
 
         public override string ToString()
         {
@@ -19,7 +19,7 @@ namespace GameStation.Libs
 
         public static int getIdByName(string nome, SqlConnection conn)
         {
-            string sql = "SELECT codigo FROM tb_estados WHERE nome = @nome";
+            string sql = "SELECT codigo FROM tb_cidades WHERE nome = @nome";
             SqlCommand command = new SqlCommand(sql, conn);
             command.Parameters.AddWithValue("@nome", nome);
 
@@ -34,7 +34,7 @@ namespace GameStation.Libs
 
         public static string getNameById(int codigo, SqlConnection conn)
         {
-            string sql = "SELECT nome FROM tb_estados WHERE codigo = @codigo";
+            string sql = "SELECT nome FROM tb_cidades WHERE codigo = @codigo";
             SqlCommand command = new SqlCommand(sql, conn);
             command.Parameters.AddWithValue("@codigo", codigo);
 

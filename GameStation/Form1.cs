@@ -19,24 +19,6 @@ namespace GameStation
         }
         
 
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ClientsRegistration clientsRegistration = new ClientsRegistration();
-                clientsRegistration.Show();
-            }
-            catch
-            {
-                //
-            }
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void cidadesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try {
@@ -81,6 +63,18 @@ namespace GameStation
         {
             ProductsReport productsReport = new ProductsReport();
             productsReport.Show();
+        }
+
+        private void novoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClientsRegistration clientsRegistration = new ClientsRegistration();
+            clientsRegistration.Show();
+        }
+
+        private void todosOsClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AllClients allClients = new AllClients();
+            allClients.Show();
         }
     }
 }
