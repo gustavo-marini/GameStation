@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using GameStation.Libs;
 
 namespace GameStation
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        public Usuario loggedUser = null;
+        public static Carrinho Cart = null;
+
+        public MainForm(Usuario user)
         {
+            loggedUser = user;
             InitializeComponent();
         }
         
@@ -75,6 +80,24 @@ namespace GameStation
         {
             AllClients allClients = new AllClients();
             allClients.Show();
+        }
+
+        private void novoFuncionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmployeesRegistration employeesRegistration = new EmployeesRegistration();
+            employeesRegistration.Show();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text += loggedUser.nome + (loggedUser.codigo_acesso == 1? " (Administrador)": " (Funcionário)");
+            Cart = new Carrinho();
+        }
+
+        private void novaVendaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Sales sales = new Sales();
+            sales.Show();
         }
     }
 }

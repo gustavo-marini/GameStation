@@ -17,7 +17,7 @@ namespace GameStation
     {
         private string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=db_gamestation;Integrated Security=True;MultipleActiveResultSets=true;";
         private SqlConnection conn;
-        private Carrinho Cart;
+        Carrinho Cart = new Carrinho();
 
         public AllProducts()
         {

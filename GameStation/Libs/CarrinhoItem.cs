@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameStation.Libs
 {
-    class CarrinhoItem
+    public class CarrinhoItem
     {
         private int codigo, quantidade;
 

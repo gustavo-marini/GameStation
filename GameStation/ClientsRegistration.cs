@@ -119,8 +119,10 @@ namespace GameStation
                     SqlDataReader cityReader = commandCity.ExecuteReader();
 
                     if(cityReader.HasRows) {
-                        codigo_cidade = cityReader.GetInt32(0);
-                        codigo_estado = cityReader.GetInt32(1);
+                        if (cityReader.Read()) {
+                            codigo_cidade = cityReader.GetInt32(0);
+                            codigo_estado = cityReader.GetInt32(1);
+                        }
                     } else {
                         // Se não encontrar a cidade na tabela, então pega a informação recebida da API e adiciona.
                         string sqlState = "SELECT * FROM tb_estados WHERE lower(nome)='"+ estado.ToLower() + "'";
@@ -159,20 +161,20 @@ namespace GameStation
 
                     SqlCommand insertClient = new SqlCommand(sqlInsert, conn);
 
-                    insertClient.Parameters.Add("@codigo_estado", SqlDbType.Int).Value = codigo_estado;
-                    insertClient.Parameters.Add("@codigo_cidade", SqlDbType.Int).Value = codigo_cidade;
-                    insertClient.Parameters.Add("@nome", SqlDbType.VarChar).Value = nome;
-                    insertClient.Parameters.Add("@sobrenome", SqlDbType.VarChar).Value = sobrenome;
-                    insertClient.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
-                    insertClient.Parameters.Add("@telefone", SqlDbType.VarChar).Value = telefone;
-                    insertClient.Parameters.Add("@celular", SqlDbType.VarChar).Value = celular;
-                    insertClient.Parameters.Add("@data_nascimento", SqlDbType.VarChar).Value = data_nascimento;
-                    insertClient.Parameters.Add("@idade", SqlDbType.Int).Value = idade;
-                    insertClient.Parameters.Add("@endereco", SqlDbType.VarChar).Value = endereco;
-                    insertClient.Parameters.Add("@cpf", SqlDbType.VarChar).Value = cpf;
-                    insertClient.Parameters.Add("@bairro", SqlDbType.VarChar).Value = bairro;
-                    insertClient.Parameters.Add("@numero", SqlDbType.Int).Value = numero;
-                    insertClient.Parameters.Add("@cep", SqlDbType.VarChar).Value = cep;
+                    insertClient.Parameters.AddWithValue("@codigo_estado", codigo_estado);
+                    insertClient.Parameters.AddWithValue("@codigo_cidade", codigo_cidade);
+                    insertClient.Parameters.AddWithValue("@nome", nome);
+                    insertClient.Parameters.AddWithValue("@sobrenome", sobrenome);
+                    insertClient.Parameters.AddWithValue("@email", email);
+                    insertClient.Parameters.AddWithValue("@telefone", telefone);
+                    insertClient.Parameters.AddWithValue("@celular", celular);
+                    insertClient.Parameters.AddWithValue("@data_nascimento", data_nascimento);
+                    insertClient.Parameters.AddWithValue("@idade", idade);
+                    insertClient.Parameters.AddWithValue("@endereco", endereco);
+                    insertClient.Parameters.AddWithValue("@cpf", cpf);
+                    insertClient.Parameters.AddWithValue("@bairro", bairro);
+                    insertClient.Parameters.AddWithValue("@numero", numero);
+                    insertClient.Parameters.AddWithValue("@cep", cep);
 
 
                     int result = insertClient.ExecuteNonQuery();
@@ -186,7 +188,7 @@ namespace GameStation
                     }
                 }
             } catch(Exception ex) {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
         }
 

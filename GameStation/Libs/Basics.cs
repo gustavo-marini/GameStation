@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Net;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 namespace GameStation
 {
@@ -56,6 +57,21 @@ namespace GameStation
             if (birth > today.AddYears(-age)) age--;
 
             return age;
+        }
+
+
+        public static string GetHashMd5(string input)
+        {
+            MD5 md5Hash = MD5.Create();
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            StringBuilder sBuilder = new StringBuilder();
+            
+            for (int i = 0; i < data.Length; i++) {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            return sBuilder.ToString();
         }
     }
 }

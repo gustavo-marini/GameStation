@@ -8,7 +8,7 @@ namespace GameStation.Libs
 {
     class Validate
     {
-        private List<string> errors;
+        private List<string> errors = new List<string>();
 
         public Validate() {
 
@@ -207,6 +207,18 @@ namespace GameStation.Libs
             } catch {
                 return false;
             }
+        }
+
+
+        public string getErrors()
+        {
+            string buildedString = "";
+
+            foreach(string error in errors) {
+                buildedString += ("- " + error + "\n");
+            }
+
+            return buildedString;
         }
 
     }

@@ -33,6 +33,23 @@ namespace GameStation
 
                 string sqlCliente = "SELECT * FROM tb_clientes WHERE codigo = @cod";
                 SqlCommand comm = new SqlCommand(sqlCliente, conn);
+                comm.Parameters.AddWithValue("@cod", codigo);
+
+                SqlDataReader read = comm.ExecuteReader();
+
+                if (read.HasRows) {
+                    if (read.Read()) {
+                        string nome = read.GetString(4);
+                        string sobrenome = read.GetString(5);
+                        string email = read.GetString(6);
+                        string data_nascimento = read.GetString(9);
+                        string telefone = read.GetString(7);
+                        string celular = read.GetString(8);
+                        int idade = read.GetInt32(10);
+                        string cpf = read.GetString(12);
+                        string cep = read.GetString(15);
+                    }
+                }
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }

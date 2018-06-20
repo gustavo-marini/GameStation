@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameStation.Libs
 {
-    class Carrinho
+    public class Carrinho
     {
         private List<CarrinhoItem> cartItems = new List<CarrinhoItem>();
         private double total = 0.0;
