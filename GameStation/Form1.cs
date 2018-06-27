@@ -14,7 +14,7 @@ namespace GameStation
 {
     public partial class MainForm : Form
     {
-        public Usuario loggedUser = null;
+        public static Usuario loggedUser = null;
         public static Carrinho Cart = null;
 
         public MainForm(Usuario user)
@@ -26,12 +26,7 @@ namespace GameStation
 
         private void cidadesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try {
-                CitiesRegistration citiesRegistration = new CitiesRegistration();
-                citiesRegistration.Show();
-            } catch {
-
-            }
+            
         }
 
         private void novoProdutoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -98,6 +93,24 @@ namespace GameStation
         {
             Sales sales = new Sales();
             sales.Show();
+        }
+
+        private void funcionáriosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            EmployessReport employessReport = new EmployessReport();
+            employessReport.Show();
+        }
+
+        private void novaCidadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CitiesRegistration citiesRegistration = new CitiesRegistration();
+            citiesRegistration.Show();
+        }
+
+        private void todasAsCidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AllCities allCities = new AllCities();
+            allCities.Show();
         }
     }
 }

@@ -89,7 +89,9 @@ namespace GameStation
 
                     if (canLogin) {
                         MainForm form = new MainForm(returnUser);
+                        this.Hide();
                         form.ShowDialog();
+                        this.Close();
                     } else {
                         MessageBox.Show("Usuário ou senha inválidos.", "Erro no login", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }

@@ -41,9 +41,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.db_gamestationDataSet1 = new GameStation.db_gamestationDataSet1();
             this.tbprodutosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tb_produtosTableAdapter = new GameStation.db_gamestationDataSet1TableAdapters.tb_produtosTableAdapter();
             this.tbgenerosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tb_generosTableAdapter = new GameStation.db_gamestationDataSet1TableAdapters.tb_generosTableAdapter();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.db_gamestationDataSet1)).BeginInit();
@@ -169,7 +167,7 @@
             // 
             // tb_produtosTableAdapter
             // 
-            this.tb_produtosTableAdapter.ClearBeforeFill = true;
+            
             // 
             // tbgenerosBindingSource
             // 
@@ -178,7 +176,7 @@
             // 
             // tb_generosTableAdapter
             // 
-            this.tb_generosTableAdapter.ClearBeforeFill = true;
+            
             // 
             // Genders
             // 
@@ -214,9 +212,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private db_gamestationDataSet1 db_gamestationDataSet1;
         private System.Windows.Forms.BindingSource tbprodutosBindingSource;
-        private db_gamestationDataSet1TableAdapters.tb_produtosTableAdapter tb_produtosTableAdapter;
         private System.Windows.Forms.BindingSource tbgenerosBindingSource;
-        private db_gamestationDataSet1TableAdapters.tb_generosTableAdapter tb_generosTableAdapter;
         public System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ListView listGenders;

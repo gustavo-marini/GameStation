@@ -77,5 +77,36 @@ namespace GameStation.Libs
                 return 0;
             }
         }
+
+        public Produto setEstoque(int estoque)
+        {
+            string sql = "UPDATE tb_produtos SET estoque = @estoque WHERE codigo = @cod";
+            SqlCommand comm = new SqlCommand(sql, base.getConn());
+            comm.Parameters.AddWithValue("@estoque", estoque);
+            comm.Parameters.AddWithValue("@cod", this.codigo);
+
+            try {
+                comm.ExecuteNonQuery();
+
+                return this;
+            } catch {
+                return this;
+            }
+        }
+
+        public int getEstoque()
+        {
+            string sql = "SELECT estoque FROM tb_produtos WHERE codigo = @cod";
+            SqlCommand comm = new SqlCommand(sql, base.getConn());
+            comm.Parameters.AddWithValue("@cod", this.codigo);
+
+            try {
+                int estoque = Convert.ToInt32(comm.ExecuteScalar());
+
+                return estoque;
+            } catch {
+                return 0;
+            }
+        }
     }
 }

@@ -179,7 +179,7 @@ namespace GameStation
 
                     int result = insertClient.ExecuteNonQuery();
 
-                    if(result == 1) {
+                    if (result == 1) {
                         MessageBox.Show("Cliente \"" + nome + " " + sobrenome + "\" inserido com sucesso.");
 
                         this.clearFields();

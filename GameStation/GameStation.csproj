@@ -32,6 +32,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -48,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllCities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllCities.Designer.cs">
+      <DependentUpon>AllCities.cs</DependentUpon>
+    </Compile>
     <Compile Include="AllClients.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +112,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>db_gamestationDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="db_gamestationDataSet2.cs">
+      <DependentUpon>db_gamestationDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db_gamestationDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_gamestationDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Developer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +131,12 @@
     </Compile>
     <Compile Include="EditAvailability.Designer.cs">
       <DependentUpon>EditAvailability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditCity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCity.Designer.cs">
+      <DependentUpon>EditCity.cs</DependentUpon>
     </Compile>
     <Compile Include="EditClient.cs">
       <SubType>Form</SubType>
@@ -130,6 +168,12 @@
     <Compile Include="EmployeesRegistration.Designer.cs">
       <DependentUpon>EmployeesRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployessReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployessReport.Designer.cs">
+      <DependentUpon>EmployessReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Genders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +197,7 @@
     <Compile Include="Libs\Carrinho.cs" />
     <Compile Include="Libs\CarrinhoItem.cs" />
     <Compile Include="Libs\Cidade.cs" />
+    <Compile Include="Libs\Cliente.cs" />
     <Compile Include="Libs\Disponibilidade.cs" />
     <Compile Include="Libs\Estado.cs" />
     <Compile Include="Libs\Desenvolvedor.cs" />
@@ -188,6 +233,10 @@
     <Compile Include="Sales.Designer.cs">
       <DependentUpon>Sales.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="AllCities.resx">
+      <DependentUpon>AllCities.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AllClients.resx">
       <DependentUpon>AllClients.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +261,9 @@
     <EmbeddedResource Include="EditAvailability.resx">
       <DependentUpon>EditAvailability.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditCity.resx">
+      <DependentUpon>EditCity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditClient.resx">
       <DependentUpon>EditClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeesRegistration.resx">
       <DependentUpon>EmployeesRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployessReport.resx">
+      <DependentUpon>EmployessReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -251,6 +306,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ReportEmployees.rdlc" />
     <EmbeddedResource Include="Sales.resx">
       <DependentUpon>Sales.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,6 +333,17 @@
     <None Include="db_gamestationDataSet1.xss">
       <DependentUpon>db_gamestationDataSet1.xsd</DependentUpon>
     </None>
+    <None Include="db_gamestationDataSet2.xsc">
+      <DependentUpon>db_gamestationDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="db_gamestationDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>db_gamestationDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db_gamestationDataSet2.xss">
+      <DependentUpon>db_gamestationDataSet2.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -291,6 +358,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
