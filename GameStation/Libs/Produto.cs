@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameStation.Libs
 {
-    class Produto : AppModel
+    public class Produto : AppModel
     {
         public int codigo, codigo_desenvolvedor, codigo_disponibilidade, estoque;
         public double preco;

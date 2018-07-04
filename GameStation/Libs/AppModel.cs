@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameStation.Libs
 {
-    class AppModel
+    public class AppModel
     {
         private string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=db_gamestation;Integrated Security=True;MultipleActiveResultSets=true;";
         private SqlConnection conn;

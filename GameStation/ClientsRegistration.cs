@@ -86,17 +86,19 @@ namespace GameStation
 
                 bool validateName = val.onlyLetters(txtName, "Nome");
                 bool validateSurname = val.onlyLetters(txtSurname, "Sobrenome");
-                bool validateEmail = val.email(txtEmail, "Email");
+                bool validateEmail = val.Required(txtEmail, "Email");
+                bool validateEmailSyntax = val.email(txtEmail, "Email");
                 bool validateBirthdate = val.date(txtBirthday, "Data de nascimento");
                 bool validateCpf = val.validateCpf(txtCpf, "CPF");
                 bool validateCep = val.required(txtCep, "CEP");
+                bool validateNumero = val.Required(txtNumber, "Número");
 
-                if(validateName && validateSurname && validateEmail && validateBirthdate && validateCpf && validateCep) {
+                if(validateName && validateSurname && validateEmail && validateEmailSyntax && validateBirthdate && validateCpf && validateCep && validateNumero) {
                     string nome = txtName.Text.ToString();
                     string sobrenome = txtSurname.Text.ToString();
                     string email = txtEmail.Text.ToString();
-                    string telefone = txtCellphone.Text.ToString();
-                    string celular = txtPhone.Text.ToString();
+                    string telefone = txtPhone.Text.ToString();
+                    string celular = txtCellphone.Text.ToString();
                     string data_nascimento = txtBirthday.Text.ToString();
                     int idade = Convert.ToInt32(txtAge.Text.ToString());
                     string endereco = txtAddress.Text.ToString();
@@ -186,6 +188,8 @@ namespace GameStation
                     } else {
                         MessageBox.Show("Alguns campos foram preenchidos incorretamente.");
                     }
+                } else {
+                    MessageBox.Show(val.getErrors(), "Erro na validação dos campos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             } catch(Exception ex) {
                 Console.WriteLine(ex.StackTrace);
@@ -202,6 +206,13 @@ namespace GameStation
                 int age = Basics.calculateAge(new DateTime(birthday.year, birthday.month, birthday.day));
 
                 txtAge.Text = age.ToString();
+            }
+        }
+
+        private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+                e.Handled = true;
             }
         }
     }

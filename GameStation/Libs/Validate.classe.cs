@@ -60,7 +60,7 @@ namespace GameStation.Libs
                     return false;
                 }
             }
-            errors.Add("O campo \"" + field_name + "\" é obrigatório.");
+            //errors.Add("O campo \"" + field_name + "\" é obrigatório.");
             return false;
         }
 
@@ -151,7 +151,7 @@ namespace GameStation.Libs
                 }
             }
 
-            errors.Add("Por favor, digite um CPF válido");
+            errors.Add("O campo \"CPF\" é obrigatório.");
             return false;
         }
 

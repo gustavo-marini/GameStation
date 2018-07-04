@@ -87,6 +87,11 @@ namespace GameStation
         {
             toolStripStatusLabel1.Text += loggedUser.nome + (loggedUser.codigo_acesso == 1? " (Administrador)": " (Funcionário)");
             Cart = new Carrinho();
+
+            if(loggedUser.codigo_acesso == 2) {
+                funcionáriosToolStripMenuItem.Visible = false;
+                funcionáriosToolStripMenuItem1.Visible = false;
+            }
         }
 
         private void novaVendaToolStripMenuItem_Click(object sender, EventArgs e)

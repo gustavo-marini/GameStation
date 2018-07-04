@@ -69,8 +69,9 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "Cadastrar";
+            this.btnSave.Text = "Salvar";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // grpLocationInformation
             // 
@@ -180,6 +181,7 @@
             this.txtCep.Name = "txtCep";
             this.txtCep.Size = new System.Drawing.Size(87, 20);
             this.txtCep.TabIndex = 13;
+            this.txtCep.TextChanged += new System.EventHandler(this.txtCep_TextChanged);
             // 
             // label10
             // 

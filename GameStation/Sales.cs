@@ -169,47 +169,62 @@ namespace GameStation
         private void button1_Click(object sender, EventArgs e)
         {
             if(listProdutos.SelectedItems.Count > 0) {
-                int codigo = Convert.ToInt32(listProdutos.SelectedItems[0].SubItems[0].Text);
-                Produto prod = new Produto();
-                prod.codigo = codigo;
 
-                if (prod.inStock() && prod.available()) {
-                    CarrinhoItem item = new CarrinhoItem();
-                    item.setCodigo(prod.codigo);
-                    item.setQuantidade(1);
-
-                    MainForm.Cart.addToCart(item);
-
-
-                    listCarrinho.Items.Clear();
-
-                    // Alimenta lista do carrinho
-                    List<CarrinhoItem> items = MainForm.Cart.getItems();
-
-                    int totalItens = 0;
-                    double totalPreco = 0.0;
-
-                    foreach (CarrinhoItem cart_item in items) {
-                        Produto produto = new Produto();
-                        produto.codigo = cart_item.getCodigo();
-
-                        string[] rowCart = {
-                            cart_item.getCodigo().ToString(),
-                            produto.getNome(),
-                            cart_item.getQuantidade().ToString(),
-                            "R$ " + (produto.getPreco() * cart_item.getQuantidade()).ToString("#.##")
-                        };
-                        ListViewItem row = new ListViewItem(rowCart);
-                        listCarrinho.Items.Add(row);
-
-                        totalItens += cart_item.getQuantidade();
-                        totalPreco += (produto.getPreco() * cart_item.getQuantidade());
-                    }
-
-                    txtTotalItems.Text = totalItens.ToString();
-                    txtTotalPrice.Text = "R$ " + totalPreco.ToString("#.##");
+                if (String.IsNullOrEmpty(txtQtd.Text) || String.IsNullOrWhiteSpace(txtQtd.Text)) {
+                    MessageBox.Show("Digite uma quantidade válida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else if (Convert.ToInt32(txtQtd.Text) <= 0) {
+                    MessageBox.Show("Digite uma quantidade válida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
-                    MessageBox.Show("O produto escolhido está sem estoque ou indisponível");
+                    int verificaEstoque = Convert.ToInt32(listProdutos.FocusedItem.SubItems[2].Text) - Convert.ToInt32(txtQtd.Text);
+
+                    if (verificaEstoque >= 0) {
+                        listProdutos.FocusedItem.SubItems[2].Text = verificaEstoque.ToString();
+
+                        int codigo = Convert.ToInt32(listProdutos.SelectedItems[0].SubItems[0].Text);
+                        Produto prod = new Produto();
+                        prod.codigo = codigo;
+
+                        if (prod.inStock() && prod.available()) {
+                            CarrinhoItem item = new CarrinhoItem();
+                            item.setCodigo(prod.codigo);
+                            item.setQuantidade(Convert.ToInt32(txtQtd.Text));
+
+                            MainForm.Cart.addToCart(item);
+
+
+                            listCarrinho.Items.Clear();
+
+                            // Alimenta lista do carrinho
+                            List<CarrinhoItem> items = MainForm.Cart.getItems();
+
+                            int totalItens = 0;
+                            double totalPreco = 0.0;
+
+                            foreach (CarrinhoItem cart_item in items) {
+                                Produto produto = new Produto();
+                                produto.codigo = cart_item.getCodigo();
+
+                                string[] rowCart = {
+                                    cart_item.getCodigo().ToString(),
+                                    produto.getNome(),
+                                    cart_item.getQuantidade().ToString(),
+                                    "R$ " + (produto.getPreco() * cart_item.getQuantidade()).ToString("#.##")
+                                };
+                                ListViewItem row = new ListViewItem(rowCart);
+                                listCarrinho.Items.Add(row);
+
+                                totalItens += cart_item.getQuantidade();
+                                totalPreco += (produto.getPreco() * cart_item.getQuantidade());
+                            }
+
+                            txtTotalItems.Text = totalItens.ToString();
+                            txtTotalPrice.Text = "R$ " + totalPreco.ToString("#.##");
+                        } else {
+                            MessageBox.Show("O produto escolhido está sem estoque ou indisponível");
+                        }
+                    } else {
+                        MessageBox.Show("A quantidade escolhida é maior que o estoque atual do produto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             } else {
                 MessageBox.Show("Selecione um produto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -336,11 +351,66 @@ namespace GameStation
                             }
                         }
                     }
+
+                    MainForm.Cart.limpa();
+                    listCarrinho.Items.Clear();
+                    txtQtd.Text = "";
+                    txtTotalPrice.Text = "";
+                    txtTotalItems.Text = "";
                 } else {
                     MessageBox.Show("Alguns campos foram preenchidos incorretamente.");
                 }
             } catch(Exception ex) {
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+
+        public void adicionarProduto(Produto prod, int quantidade)
+        {
+            if(quantidade <= prod.getEstoque()) {
+                CarrinhoItem item = new CarrinhoItem();
+                item.setCodigo(prod.codigo);
+                item.setQuantidade(1);
+
+                MainForm.Cart.addToCart(item);
+
+
+                listCarrinho.Items.Clear();
+
+                // Alimenta lista do carrinho
+                List<CarrinhoItem> items = MainForm.Cart.getItems();
+
+                int totalItens = 0;
+                double totalPreco = 0.0;
+
+                foreach (CarrinhoItem cart_item in items) {
+                    Produto produto = new Produto();
+                    produto.codigo = cart_item.getCodigo();
+
+                    string[] rowCart = {
+                        cart_item.getCodigo().ToString(),
+                        produto.getNome(),
+                        cart_item.getQuantidade().ToString(),
+                        "R$ " + (produto.getPreco() * cart_item.getQuantidade()).ToString("#.##")
+                    };
+                    ListViewItem row = new ListViewItem(rowCart);
+                    listCarrinho.Items.Add(row);
+
+                    totalItens += cart_item.getQuantidade();
+                    totalPreco += (produto.getPreco() * cart_item.getQuantidade());
+                }
+
+                txtTotalItems.Text = totalItens.ToString();
+                txtTotalPrice.Text = "R$ " + totalPreco.ToString("#.##");
+            }
+        }
+
+
+        private void txtQtd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) {
+                e.Handled = true;
             }
         }
     }

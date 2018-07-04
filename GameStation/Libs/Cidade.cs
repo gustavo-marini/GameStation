@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace GameStation.Libs
 {
-    class Cidade
+    class Cidade : AppModel
     {
         public int codigo, codigo_estado;
         public string nome, cep;

@@ -36,6 +36,11 @@ namespace GameStation.Libs
             CarrinhoItem checkItemInCart = itemInCart(item);
             if (checkItemInCart != null) {
                 checkItemInCart.setQuantidade(checkItemInCart.getQuantidade() + item.getQuantidade());
+
+                Produto prod = new Produto();
+                prod.codigo = checkItemInCart.getCodigo();
+
+                total += (prod.getPreco() * item.getQuantidade());
             } else {
                 cartItems.Add(item);
             }
@@ -60,6 +65,13 @@ namespace GameStation.Libs
         public List<CarrinhoItem> getItems()
         {
             return cartItems;
+        }
+
+
+        public Carrinho limpa()
+        {
+            this.cartItems.Clear();
+            return this;
         }
     }
 }
